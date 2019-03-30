@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePointOfSaleTable extends Migration
+class CreateProductsServicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreatePointOfSaleTable extends Migration
      */
     public function up()
     {
-        Schema::table('PointOfSale', function (Blueprint $table) {
+        Schema::create('ProductsServices', function (Blueprint $table) {
             
             $table->increments('ID');
-            $table->string('Name',30)
-            $table->string('Address',50)->nullable();
+            $table->string('Article',30);
+            $table->string('Name',30);
+            $table->string('Description',255);
+            $table->float('Price',8,2);
+            $table->integer('Quantity');
 
         });
     }
@@ -29,6 +32,6 @@ class CreatePointOfSaleTable extends Migration
      */
     public function down()
     {
-       Schema::drop( 'PointOfSale' );
+        Schema::drop( 'ProductsServices' );
     }
 }

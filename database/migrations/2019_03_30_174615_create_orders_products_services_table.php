@@ -13,10 +13,10 @@ class CreateOrdersProductsServicesTable extends Migration
      */
     public function up()
     {
-        Schema::table('OrdersProductsServices', function (Blueprint $table) {
+        Schema::create('OrdersProductsServices', function (Blueprint $table) {
             
-            $table->integer( 'OrderID' );
-            $table->integer( 'ProductServiceID' );
+            $table->unsignedInteger( 'OrderID' );
+            $table->unsignedInteger( 'ProductServiceID' );
             $table->integer( 'Quantity' );
             $table->float( 'Price', 8, 2 );
             $table->float( 'Amount', 8, 2 );
