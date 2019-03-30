@@ -14,7 +14,11 @@ class CreatePointOfSaleTable extends Migration
     public function up()
     {
         Schema::table('PointOfSale', function (Blueprint $table) {
-            //
+            
+            $table->increments('ID');
+            $table->string('Name',30)
+            $table->string('Address',50)->nullable();
+
         });
     }
 
@@ -25,8 +29,6 @@ class CreatePointOfSaleTable extends Migration
      */
     public function down()
     {
-        Schema::table('PointOfSale', function (Blueprint $table) {
-            //
-        });
+       Schema::drop( 'PointOfSale' );
     }
 }
