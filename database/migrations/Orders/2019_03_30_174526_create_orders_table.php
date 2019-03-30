@@ -14,7 +14,18 @@ class CreateOrdersTable extends Migration
     public function up()
     {
         Schema::table('Orders', function (Blueprint $table) {
-            //
+            
+            $table->increments( 'ID' );
+            $table->dateTime( 'Date' );
+            $table->float( 'Amount', 8, 2 );
+            $table->integer( 'UserID' );
+            $table->integer( 'ClientID' );
+            $table->integer( 'PointOfSaleID' );
+
+            $table->foreign( 'UserID' )->reference( 'ID' )->on( 'Users' );
+            $table->foreign( 'ClientID' )->reference( 'ID' )->on( 'Users' );
+            $table->foreign( 'PointOfSaleID' )->reference( 'ID' )->on( 'PointOdSale' );
+
         });
     }
 
@@ -25,8 +36,6 @@ class CreateOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::table('Orders', function (Blueprint $table) {
-            //
-        });
+        Schema::drop( 'Orders' );
     }
 }
