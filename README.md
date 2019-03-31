@@ -1,0 +1,37 @@
+### Structure
+
+- Authorization
+    - Login
+    - Logout
+- Orders
+    - Create
+    - Update
+    - Delete
+    - Search
+- Clients
+    - Create
+    - Update
+    - Delete
+    - Search
+- Payments
+    - List
+    - Create
+- Reports
+    - POS
+    - Orders
+- Administrator
+    - POS
+        - List
+        - Create
+        - Update
+        - Delete
+    - Products/Services
+        - List
+        - Create
+        - Update
+        - Delete
+    - Managers
+        - List
+        - Create
+        - Update
+        - Delete

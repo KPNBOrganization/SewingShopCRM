@@ -11,9 +11,31 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use Illuminate\Http\Request;
 
-Route::get('/clients','ClientsController@list');
-Route::get('/clients/{id}','ClientsController@get');
+Route::get( '/', function ( Request $request ) {
+
+    if( $request->session()->exists( 'user' ) ) {
+
+        return view( 'welcome' );
+
+    } else {
+
+        return view( 'authorization/login' );
+
+    }
+
+} );
+
+Route::post( '/', 'AuthorizationController@login' );
+Route::get( '/logout', 'AuthorizationController@logout' );
+
+Route::get( '/managers', 'ManagersController@list' );
+Route::get( '/managers/{id}', 'ManagersController@edit' );
+
+Route::post( '/managers/create', 'ManagersController@create' );
+Route::post( '/managers/{id}', 'ManagersController@update' );
+Route::delete( '/managers/{id}', 'ManagersController@delete' );
+
+// Route::get( '/clients','ClientsController@list' )->middleware( 'auth' );
+// Route::get( '/clients/{id}','ClientsController@get' )->middleware( 'auth' );
