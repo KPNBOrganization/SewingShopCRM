@@ -16,7 +16,7 @@ class ManagersController extends Controller {
         $list = ManagersModel::list();
 
         $result = [
-            'managers' => $list
+            'managers'  => $list
         ];
 
         return view( 'managers/search', $result );

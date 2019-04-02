@@ -56,3 +56,12 @@ Route::get( '/products-services/{id}', 'ProductsServicesController@edit' );
 Route::post( '/products-services/create', 'ProductsServicesController@create' );
 Route::post( '/products-services/{id}', 'ProductsServicesController@update' );
 Route::delete( '/products-services/{id}', 'ProductsServicesController@delete' );
+
+// POS
+
+Route::get( '/pos', 'POSController@list' );
+Route::get( '/pos/{id}', 'POSController@edit' );
+
+Route::post( '/pos/create', 'POSController@create' );
+Route::post( '/pos/{id}', 'POSController@update' );
+Route::delete( '/pos/{id}', 'POSController@delete' );
