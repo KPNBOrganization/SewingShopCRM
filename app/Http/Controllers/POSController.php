@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
@@ -60,8 +59,7 @@ class POSController extends Controller {
 
             $data = [
                 'Name'      => $request->input( 'name' ),
-                'Address'   => Hash::make( $request->input( 'address' ) ),
-
+                'Address'   => $request->input( 'address' )
             ];
 
             $id = POSModel::create( $data );
@@ -88,8 +86,7 @@ class POSController extends Controller {
 
             $data = [
                 'Name'      => $request->input( 'name' ),
-                'Address'   => $request->input( 'address' ),
-
+                'Address'   => $request->input( 'address' )
             ];
 
             POSModel::update( $id, $data );
