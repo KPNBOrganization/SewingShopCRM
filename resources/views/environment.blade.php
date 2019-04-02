@@ -45,16 +45,18 @@
 					<a class="nav-link" href="#">Reports</a>
 				</li>
 
-				<li class="nav-item">
-					<a class="nav-link" href="/pos">POS</a>
-				</li>
+				<li class="nav-item dropdown">
 
-				<li class="nav-item">
-					<a class="nav-link" href="/products-services">Products & Services</a>
-				</li>
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Administrator
+					</a>
 
-				<li class="nav-item">
-					<a class="nav-link" href="/managers">Managers</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="/pos">Points of Sales</a>
+						<a class="dropdown-item" href="/products-services">Products & Services</a>
+						<a class="dropdown-item" href="/managers">Managers</a>
+					</div>
+
 				</li>
 
 			</ul>

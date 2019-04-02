@@ -50,7 +50,7 @@
 
                 <div class="form-group">
                     <label for="inputPrice">Price</label>
-                    <input type="number" name="price" value="{{ @$price }}" class="form-control" id="inputPrice" placeholder="Enter Price" min="0" step="0.001">
+                    <input type="number" name="price" value="{{ @$price }}" class="form-control" id="inputPrice" placeholder="Enter Price" min="0" step="0.01">
                 </div>
 
                 <div class="form-group">
