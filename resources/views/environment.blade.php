@@ -46,11 +46,11 @@
 				</li>
 
 				<li class="nav-item">
-					<a class="nav-link" href="#">POS</a>
+					<a class="nav-link" href="">POS</a>
 				</li>
 
 				<li class="nav-item">
-					<a class="nav-link" href="#">Products & Services</a>
+					<a class="nav-link" href="/products-services">Products & Services</a>
 				</li>
 
 				<li class="nav-item">
@@ -58,6 +58,10 @@
 				</li>
 
 			</ul>
+
+			<a href="/logout" class="btn text-white-50 float-lg-right px-0">
+				Log out
+			</a>
 
 		</div>
 

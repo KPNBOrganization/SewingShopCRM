@@ -47,3 +47,12 @@ Route::get( '/clients/{id}', 'ClientsController@edit' );
 Route::post( '/clients/create', 'ClientsController@create' );
 Route::post( '/clients/{id}', 'ClientsController@update' );
 Route::delete( '/clients/{id}', 'ClientsController@delete' );
+
+// PRODUCTS/SERVICES
+
+Route::get( '/products-services', 'ProductsServicesController@list' );
+Route::get( '/products-services/{id}', 'ProductsServicesController@edit' );
+
+Route::post( '/products-services/create', 'ProductsServicesController@create' );
+Route::post( '/products-services/{id}', 'ProductsServicesController@update' );
+Route::delete( '/products-services/{id}', 'ProductsServicesController@delete' );
