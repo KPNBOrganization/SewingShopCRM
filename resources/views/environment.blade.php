@@ -46,7 +46,7 @@
 				</li>
 
 				<li class="nav-item">
-					<a class="nav-link" href="#">POS</a>
+					<a class="nav-link" href="/pos">POS</a>
 				</li>
 
 				<li class="nav-item">
