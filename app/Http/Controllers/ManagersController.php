@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 use App\Http\Models\ManagersModel;
 
@@ -21,19 +23,22 @@ class ManagersController extends Controller {
 
     }
 
-    public function edit( $id ) {
+    public function edit( Request $request, $id ) {
 
         if( $id != 'create' ) {
 
-           $result = [
-                'manager' => ManagersModel::get( $id )
-           ];
+            $manager = ManagersModel::get( $id );
+
+            $result = [
+                'username'  => $manager->Username,
+                'email'     => $manager->Email,
+                'phone'     => $manager->Phone,
+                'fullName'  => $manager->FullName
+            ];
 
         } else {
 
-            $result = [
-                'manager' => []
-            ];
+            $result = $request->old();
 
         }
 
@@ -43,39 +48,75 @@ class ManagersController extends Controller {
 
     public function create( Request $request ) {
 
-        $data = [
-            'Username'  => $request->input( 'Username' ),
-            'Password'  => Hash::make( $request->input( 'Password' ) ),
-            'Email'     => $request->input( 'Email' ),
-            'Phone'     => $request->input( 'Phone' ),
-            'Role'      => ManagersModel::MANAGER_ROLE,
-            'FullName'  => $request->input( 'FullName' )
+        $rules = [
+            'username'  => 'required|unique:Users,Username',
+            'password'  => 'required',
+            'email'     => 'required',
+            'fullName'  => 'required'
         ];
 
-        $id = ManagersModel::create( $data );
+        $validator = Validator::make( $request->all(), $rules );
 
-        return redirect( '/managers/' . $id );
+        if( $validator->fails() ) {
+
+            return redirect( '/managers/create' )->withErrors( $validator )->withInput();
+
+        } else {
+
+            $data = [
+                'Username'  => $request->input( 'username' ),
+                'Password'  => Hash::make( $request->input( 'password' ) ),
+                'Email'     => $request->input( 'email' ),
+                'Phone'     => $request->input( 'phone' ),
+                'Role'      => ManagersModel::MANAGER_ROLE,
+                'FullName'  => $request->input( 'fullName' )
+            ];
+
+            $id = ManagersModel::create( $data );
+
+            return redirect( '/managers/' . $id );
+
+        }
 
     }
 
     public function update( Request $request, $id ) {
-
-        $data = [
-            'Username'  => $request->input( 'Username' ),
-            'Email'     => $request->input( 'Email' ),
-            'Phone'     => $request->input( 'Phone' ),
-            'FullName'  => $request->input( 'FullName' )
+        
+        $rules = [
+            'username'  => [
+                'required',
+                Rule::unique( 'Users', 'Username' )->ignore( $id, 'ID' )
+            ],
+            'email'     => 'required',
+            'fullName'  => 'required'
         ];
 
-        if( strlen( $request->input( 'Password' ) ) > 0 ) {
+        $validator = Validator::make( $request->all(), $rules );
 
-            $data['Password'] = Hash::make( $request->input( 'Password' ) );
+        if( $validator->fails() ) {
+
+            return redirect( '/managers/' . $id )->withErrors( $validator )->withInput();
+
+        } else {
+
+            $data = [
+                'Username'  => $request->input( 'username' ),
+                'Email'     => $request->input( 'email' ),
+                'Phone'     => $request->input( 'phone' ),
+                'FullName'  => $request->input( 'fullName' )
+            ];
+
+            if( strlen( $request->input( 'password' ) ) > 0 ) {
+
+                $data['Password'] = Hash::make( $request->input( 'password' ) );
+
+            }
+
+            ManagersModel::update( $id, $data );
+
+            return redirect( '/managers/' . $id );
 
         }
-
-        ManagersModel::update( $id, $data );
-
-        return redirect( '/managers/' . $id );
 
     }
 

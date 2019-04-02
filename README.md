@@ -31,7 +31,7 @@
         - Update
         - Delete
     - Managers
-        - List
+        -  
         - Create
         - Update
         - Delete

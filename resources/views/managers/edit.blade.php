@@ -35,34 +35,46 @@
 
                 <div class="form-group">
                     <label for="inputUsername">Username</label>
-                    <input type="text" name="Username" value="{{ @$manager->Username }}" class="form-control" id="inputUsername" placeholder="Enter Username">
+                    <input type="text" name="username" value="{{ @$username }}" class="form-control" id="inputUsername" placeholder="Enter Username">
                 </div>
 
                 <div class="form-group">
                     <label for="inputPassword">Password</label>
-                    <input type="password" name="Password" class="form-control" id="inputPassword" placeholder="Password">
+                    <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Enter Password">
                 </div>
 
                 <div class="form-group">
                     <label for="inputEmail">Email</label>
-                    <input type="email" name="Email" value="{{ @$manager->Email }}" class="form-control" id="inputEmail" placeholder="Enter Email">
+                    <input type="email" name="email" value="{{ @$email }}" class="form-control" id="inputEmail" placeholder="Enter Email">
                 </div>
 
                 <div class="form-group">
                     <label for="inputPhone">Phone</label>
-                    <input type="text" name="Phone" value="{{ @$manager->Phone }}" class="form-control" id="inputPhone" placeholder="Enter Phone">
+                    <input type="text" name="phone" value="{{ @$phone }}" class="form-control" id="inputPhone" placeholder="Enter Phone">
                 </div>
 
                 <div class="form-group">
                     <label for="inputFullname">Full name</label>
-                    <input type="text" name="FullName" value="{{ @$manager->FullName }}" class="form-control" id="inputFullname" placeholder="Enter Full name">
+                    <input type="text" name="fullName" value="{{ @$fullName }}" class="form-control" id="inputFullname" placeholder="Enter Full name">
                 </div>
 
                 @if( request()->id == 'create' )
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button type="submit" class="btn btn-primary mb-3">Create</button>
                 @else
-                    <button type="submit" class="btn btn-primary">Update</button>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmModal">Delete</button>
+                    <button type="submit" class="btn btn-primary mb-3">Update</button>
+                    <button type="button" class="btn btn-danger mb-3" data-toggle="modal" data-target="#confirmModal">Delete</button>
+                @endif
+
+                @if ( $errors->any() )
+
+                    @foreach ( $errors->all() as $error )
+
+                        <div class="alert alert-danger">
+                            {{ $error }}
+                        </div>
+
+                    @endforeach
+
                 @endif
 
             </form>

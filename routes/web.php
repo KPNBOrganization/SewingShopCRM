@@ -30,6 +30,8 @@ Route::get( '/', function ( Request $request ) {
 Route::post( '/', 'AuthorizationController@login' );
 Route::get( '/logout', 'AuthorizationController@logout' );
 
+// MANAGERS
+
 Route::get( '/managers', 'ManagersController@list' );
 Route::get( '/managers/{id}', 'ManagersController@edit' );
 
@@ -37,5 +39,11 @@ Route::post( '/managers/create', 'ManagersController@create' );
 Route::post( '/managers/{id}', 'ManagersController@update' );
 Route::delete( '/managers/{id}', 'ManagersController@delete' );
 
-// Route::get( '/clients','ClientsController@list' )->middleware( 'auth' );
-// Route::get( '/clients/{id}','ClientsController@get' )->middleware( 'auth' );
+// CLIENTS
+
+Route::get( '/clients', 'ClientsController@list' );
+Route::get( '/clients/{id}', 'ClientsController@edit' );
+
+Route::post( '/clients/create', 'ClientsController@create' );
+Route::post( '/clients/{id}', 'ClientsController@update' );
+Route::delete( '/clients/{id}', 'ClientsController@delete' );
