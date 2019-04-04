@@ -49,7 +49,7 @@
 					</a>
 
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownReports">
-						<a class="dropdown-item" href="/reports/order">Orders</a>
+						<a class="dropdown-item" href="/reports/orders">Orders</a>
 						<a class="dropdown-item" href="/reports/pos">Points of Sales</a>
 					</div>
 

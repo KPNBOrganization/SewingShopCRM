@@ -41,7 +41,7 @@
                 <tr onclick="window.location = '{{ '/pos/' . $place->ID }}'">
                     <th scope="row">{{ $place->ID }}</th>
                     <td>{{ $place->Name }}</td>
-                    <td>{{ $place->Amount }}</td>
+                    <td>{{ number_format( $place->Amount, 2, '.', '' ) }}</td>
                 </tr>
 
             @endforeach
