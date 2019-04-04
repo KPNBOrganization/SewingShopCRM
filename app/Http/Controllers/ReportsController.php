@@ -12,12 +12,24 @@ class ReportsController extends Controller {
 
     public function pos () {
 
-    	return view('reports/pos');
+        $list = ReportsModel::getPosReport();
+
+        $result = [
+            'pos' => $list
+        ];
+
+    	return view('reports/pos', $result);
     }
 
     public function orders() {
 
-    	return view('reports/orders');
+    	$list = ReportsModel::getOrdersLastMonth();
+
+    	$result = [
+    		'orders' => $list
+    	];
+
+    	return view( 'reports/orders', $result );
     }
 }
 

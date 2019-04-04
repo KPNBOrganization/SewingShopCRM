@@ -30,11 +30,21 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
-                <th scope="col">Address</th>
+                <th scope="col">Amount</th>
             </tr>
         </thead>
 
         <tbody>
+
+            @foreach( $pos as $place )
+                
+                <tr onclick="window.location = '{{ '/pos/' . $place->ID }}'">
+                    <th scope="row">{{ $place->ID }}</th>
+                    <td>{{ $place->Name }}</td>
+                    <td>{{ $place->Amount }}</td>
+                </tr>
+
+            @endforeach
 
         </tbody>
         

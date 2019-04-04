@@ -24,23 +24,33 @@
 
     </div>
 
-    <div class="table-controls">
-
-        <a class="btn btn-primary float-right mb-3" href="/pos/create">Create</a>
-
-    </div>
-
     <table class="table table-hover">
 
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Address</th>
+                <th scope="col">Date</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Manager</th>
+                <th scope="col">Client</th>
+                <th scope="col">Point of Sale</th>
             </tr>
         </thead>
 
         <tbody>
+
+            @foreach( $orders as $order )
+                
+                <tr onclick="window.location = '{{ '/orders/' . $order->ID }}'">
+                    <th scope="row">{{ $order->ID }}</th>
+                    <td>{{ $order->Date }}</td>
+                    <td>{{ number_format( $order->Amount, 2, '.', '' ) }}</td>
+                    <td>{{ $order->Manager }}</td>
+                    <td>{{ $order->Client }}</td>
+                    <td>{{ $order->PointOfSale }}</td>
+                </tr>
+
+            @endforeach
 
         </tbody>
         
