@@ -39,7 +39,7 @@
 				</li>
 
 				<li class="nav-item">
-					<a class="nav-link" href="#">Payments</a>
+					<a class="nav-link" href="/payments">Payments</a>
 				</li>
 
 				<li class="nav-item">
