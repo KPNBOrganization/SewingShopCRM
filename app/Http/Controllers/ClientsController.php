@@ -124,7 +124,7 @@ class ClientsController extends Controller {
 
     public function delete( $id ) {
 
-        clientsModel::delete( $id );
+        ClientsModel::delete( $id );
 
         return redirect( '/clients' );
 

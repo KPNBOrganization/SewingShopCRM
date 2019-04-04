@@ -16,6 +16,7 @@
 - Payments
     - List
     - Create
+    - Update
 - Reports
     - POS
     - Orders

@@ -38,7 +38,7 @@
                 <th scope="col">Article</th>
                 <th scope="col">Name</th>
                 <th scope="col">Price</th>
-                <th scope="col">Quantity</th>
+                <!-- <th scope="col">Quantity</th> -->
             </tr>
         </thead>
 
@@ -50,8 +50,8 @@
                     <th scope="row">{{ $product->ID }}</th>
                     <td>{{ $product->Article }}</td>
                     <td>{{ $product->Name }}</td>
-                    <td>{{ $product->Price }}</td>
-                    <td>{{ $product->Quantity }}</td>
+                    <td>{{ number_format( $product->Price, 2, '.', '' ) }}</td>
+                    <!-- <td>{{ $product->Quantity }}</td> -->
                 </tr>
 
             @endforeach

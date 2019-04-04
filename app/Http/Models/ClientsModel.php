@@ -8,7 +8,7 @@ class ClientsModel {
 
     const CLIENT_ROLE = 3;
 
-    public static function list( $searchString ) {
+    public static function list( $searchString = '' ) {
 
         $result = DB::table( 'Users' )
             ->where( 'Role', '=', self::CLIENT_ROLE )

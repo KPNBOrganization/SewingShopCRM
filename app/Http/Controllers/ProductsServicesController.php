@@ -34,7 +34,7 @@ class ProductsServicesController extends Controller {
                 'name'          => $product->Name,
                 'description'   => $product->Description,
                 'price'         => $product->Price,
-                'quantity'       => $product->Quantity
+                // 'quantity'       => $product->Quantity
             ];
 
         } else {
@@ -54,7 +54,7 @@ class ProductsServicesController extends Controller {
             'name'          => 'required',
             'description'   => 'required',
             'price'         => 'required',
-            'quantity'      => 'required'
+            // 'quantity'      => 'required'
         ];
 
         $validator = Validator::make( $request->all(), $rules );
@@ -70,7 +70,7 @@ class ProductsServicesController extends Controller {
                 'Name'          => $request->input( 'name' ),
                 'Description'   => $request->input( 'description' ),
                 'Price'         => $request->input( 'price' ),
-                'Quantity'      => $request->input( 'quantity' )
+                'Quantity'      => 0
             ];
 
             $id = ProductsServicesModel::create( $data );
@@ -91,7 +91,7 @@ class ProductsServicesController extends Controller {
             'name'          => 'required',
             'description'   => 'required',
             'price'         => 'required',
-            'quantity'      => 'required'
+            // 'quantity'      => 'required'
         ];
 
         $validator = Validator::make( $request->all(), $rules );
@@ -107,7 +107,7 @@ class ProductsServicesController extends Controller {
                 'Name'          => $request->input( 'name' ),
                 'Description'   => $request->input( 'description' ),
                 'Price'         => $request->input( 'price' ),
-                'Quantity'      => $request->input( 'quantity' )
+                // 'Quantity'      => $request->input( 'quantity' )
             ];
 
             ProductsServicesModel::update( $id, $data );

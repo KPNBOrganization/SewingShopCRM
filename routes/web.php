@@ -65,3 +65,13 @@ Route::get( '/pos/{id}', 'POSController@edit' );
 Route::post( '/pos/create', 'POSController@create' );
 Route::post( '/pos/{id}', 'POSController@update' );
 Route::delete( '/pos/{id}', 'POSController@delete' );
+
+
+// ORDERS
+
+Route::get( '/orders', 'OrdersController@list' );
+Route::get( '/orders/{id}', 'OrdersController@edit' );
+
+Route::post( '/orders/create', 'OrdersController@create' );
+Route::post( '/orders/{id}', 'OrdersController@update' );
+Route::delete( '/orders/{id}', 'OrdersController@delete' );
