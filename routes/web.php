@@ -65,3 +65,12 @@ Route::get( '/pos/{id}', 'POSController@edit' );
 Route::post( '/pos/create', 'POSController@create' );
 Route::post( '/pos/{id}', 'POSController@update' );
 Route::delete( '/pos/{id}', 'POSController@delete' );
+
+
+//PAYMENTS
+
+Route::get( 'payments', 'PaymentsController@list' );
+Route::get( '/payments/{id}', 'PaymentsController@edit' );
+
+Route::post( '/payments/create', 'PaymentsController@create' );
+Route::post( '/payments/{id}', 'PaymentsController@update' );
