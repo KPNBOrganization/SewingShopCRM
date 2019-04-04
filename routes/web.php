@@ -82,3 +82,9 @@ Route::get( '/payments/{id}', 'PaymentsController@edit' );
 
 Route::post( '/payments/create', 'PaymentsController@create' );
 Route::post( '/payments/{id}', 'PaymentsController@update' );
+
+
+//REPORTS
+
+Route::get( 'reports/pos', 'ReportsController@pos' );
+Route::get( 'reports/orders', 'ReportsController@orders' );
