@@ -10,6 +10,7 @@
 	
 	<script src="/vendors/jquery-3.3.1.min.js"></script>
 	<script src="/vendors/bootstrap-4.3.1/js/bootstrap.bundle.min.js"></script>
+	<script src="/vendors/knockout-3.5.0.js"></script>
 
     <title>SewingShop CRM</title>
 
@@ -30,7 +31,7 @@
 			<ul class="navbar-nav mr-auto">
 
 				<li class="nav-item">
-					<a class="nav-link" href="#">Orders</a>
+					<a class="nav-link" href="/orders">Orders</a>
 				</li>
 
 				<li class="nav-item">

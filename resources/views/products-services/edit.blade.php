@@ -53,10 +53,10 @@
                     <input type="number" name="price" value="{{ @$price }}" class="form-control" id="inputPrice" placeholder="Enter Price" min="0" step="0.01">
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="inputQuantity">Quantity</label>
                     <input type="number" name="quantity" value="{{ @$quantity }}" class="form-control" id="inputQuantity" placeholder="Enter Quantity" min="0">
-                </div>
+                </div> -->
 
                 @if( request()->id == 'create' )
                     <button type="submit" class="btn btn-primary mb-3">Create</button>
