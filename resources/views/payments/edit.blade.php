@@ -39,20 +39,38 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="inputUserID">UserID</label>
-                    <input type="text" name="userid" value="{{ @$userid }}" class="form-control" id="inputUserID" placeholder="Enter UserID">
+                    <label for="inputManager">Manager</label>
+                    <select class="form-control" id="inputManager" name="userid">
+
+                        @foreach ( $managersList as $option )
+                            <option value="{{ $option->ID }}"
+                                {{ ( $option->ID == @$userid ? ' selected' : '' ) }}>
+                                {{ $option->FullName }}
+                            </option>
+                        @endforeach
+
+                    </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="inputOrderID">OrderID</label>
-                    <input type="text" name="orderid" value="{{ @$orderid }}" class="form-control" id="inputOrderID" placeholder="Enter OrderID">
+                    <label for="inputOrder">Order</label>
+                    <select class="form-control" id="inputOrder" name="orderid">
+                        
+                        @foreach ( $ordersList as $option )
+                            <option value="{{ $option->ID }}"
+                                {{ ( $option->ID == @$orderid ? ' selected' : '' ) }}>
+                                {{ $option->Client . ' - ' . $option->ID }}
+                            </option>
+                        @endforeach
+
+                    </select>
                 </div>
 
                 @if( request()->id == 'create' )
                     <button type="submit" class="btn btn-primary mb-3">Create</button>
                 @else
                     <button type="submit" class="btn btn-primary mb-3">Update</button>
-                    <button type="button" class="btn btn-danger mb-3" data-toggle="modal" data-target="#confirmModal">Delete</button>
+                    <!-- <button type="button" class="btn btn-danger mb-3" data-toggle="modal" data-target="#confirmModal">Delete</button> -->
                 @endif
 
                 @if ( $errors->any() )

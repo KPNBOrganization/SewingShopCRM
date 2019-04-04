@@ -42,8 +42,17 @@
 					<a class="nav-link" href="/payments">Payments</a>
 				</li>
 
-				<li class="nav-item">
-					<a class="nav-link" href="#">Reports</a>
+				<li class="nav-item dropdown">
+
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownReports" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Reports
+					</a>
+
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownReports">
+						<a class="dropdown-item" href="/reports/order">Orders</a>
+						<a class="dropdown-item" href="/reports/pos">Points of Sales</a>
+					</div>
+
 				</li>
 
 				<li class="nav-item dropdown">

@@ -37,8 +37,8 @@
                 <th scope="col">#</th>
                 <th scope="col">Date</th>
                 <th scope="col">Amount</th>
-                <th scope="col">UserID</th>
-                <th scope="col">OrderID</th>
+                <th scope="col">Manager</th>
+                <th scope="col">Order</th>
             </tr>
         </thead>
 
@@ -50,7 +50,7 @@
                     <th scope="row">{{ $payment->ID }}</th>
                     <td>{{ $payment->Date }}</td>
                     <td>{{ $payment->Amount }}</td>
-                    <td>{{ $payment->UserID }}</td>
+                    <td>{{ $payment->Manager }}</td>
                     <td>{{ $payment->OrderID }}</td>                    
                 </tr>
 

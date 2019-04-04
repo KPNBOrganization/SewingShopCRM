@@ -8,7 +8,13 @@ class PaymentsModel {
 
     public static function list() {
 
-        $result = DB::table( 'Payments' )->orderBy( 'ID', 'DESC' )->get();
+        $result = DB::table( 'Payments' )
+                    ->select(
+                        '*',
+                        DB::raw( '( SELECT FullName FROM Users WHERE Users.ID = UserID ) AS Manager' )
+                    )
+                    ->orderBy( 'ID', 'DESC' )
+                    ->get();
 
         return $result;
 

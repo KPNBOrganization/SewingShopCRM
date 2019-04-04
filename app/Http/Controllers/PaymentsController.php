@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
 use App\Http\Models\PaymentsModel;
+use App\Http\Models\OrdersModel;
+use App\Http\Models\ManagersModel;
 
 class PaymentsController extends Controller {
 
@@ -24,19 +26,27 @@ class PaymentsController extends Controller {
 
     public function edit( Request $request, $id ) {
 
+        $orders = OrdersModel::list();
+        $managers = ManagersModel::list();
+
         if( $id != 'create' ) {
 
             $payments = PaymentsModel::get( $id );
 
             $result = [
-                'amount'    => $payments->Address,
-                'userid'    => $payments->UserID,
-                'orderid'   => $payments->OrderID
+                'amount'        => $payments->Amount,
+                'userid'        => $payments->UserID,
+                'orderid'       => $payments->OrderID,
+                'ordersList'    => $orders,
+                'managersList'  => $managers
             ];
 
         } else {
 
             $result = $request->old();
+
+            $result['ordersList'] = $orders;
+            $result['managersList'] = $managers;
 
         }
 
