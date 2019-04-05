@@ -23,7 +23,7 @@ class ReportsModel {
                         ) AS Amount
                     ')
                 )
-                ->orderBy( 'ID', 'DESC' )
+                ->orderBy( 'Amount', 'DESC' )
                 ->get();
 
         return $result;

@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class TableSeeder extends Seeder
+class ProductsServicesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +12,7 @@ class TableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table( 'PointOfSale' )
+        DB::table( 'ProductsServices' )
             ->insert([
 
                 [
@@ -21,7 +21,6 @@ class TableSeeder extends Seeder
                     'Description'  => 'A fine continuous protein fiber produced by various insect larvae usually for cocoons',
                     'Price'  => '5.99',
                     'Quantity'  => '5000'
-
                 ],
 
                 [
@@ -57,13 +56,12 @@ class TableSeeder extends Seeder
                 ],
 
                 [
-                    'Article'  => 'ABCDE54321',
+                    'Article'  => 'ABCDE54322',
                     'Name'  => 'Kniting sweater ',
                     'Description'  => 'This sweater will keep you warm',
                     'Price'  => '49.99',
                     'Quantity'  => '1'
                 ]
-
                          
             ]);
     }

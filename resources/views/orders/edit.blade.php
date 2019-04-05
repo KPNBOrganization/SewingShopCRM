@@ -100,6 +100,7 @@
                             <th class="align-middle" scope="row" data-bind="text: ( $index() + 1 )"></th>
                             <td class="align-middle">
                                 <select class="form-control" 
+                                    style="width: 150px"
                                     data-bind="options: availableProducts,
                                                 optionsText: 'Article',
                                                 optionsValue: 'ID',

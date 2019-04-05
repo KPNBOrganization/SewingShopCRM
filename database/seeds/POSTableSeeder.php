@@ -31,7 +31,7 @@ class POSTableSeeder extends Seeder
                 ],
 
                 [
-                    'Name'  => 'phone',
+                    'Name'  => 'Phone',
                     'Address'  => ''
                 ]
                          
