@@ -13,6 +13,8 @@
 
 use Illuminate\Http\Request;
 
+use App\Http\Models\UsersModel;
+
 Route::get( '/', function ( Request $request ) {
 
     if( $request->session()->exists( 'user' ) ) {
@@ -30,61 +32,80 @@ Route::get( '/', function ( Request $request ) {
 Route::post( '/', 'AuthorizationController@login' );
 Route::get( '/logout', 'AuthorizationController@logout' );
 
-// MANAGERS
+// CLIENTS MODULE
 
-Route::get( '/managers', 'ManagersController@list' );
-Route::get( '/managers/{id}', 'ManagersController@edit' );
+Route::middleware([ 'auth' ])->group(function() {
 
-Route::post( '/managers/create', 'ManagersController@create' );
-Route::post( '/managers/{id}', 'ManagersController@update' );
-Route::delete( '/managers/{id}', 'ManagersController@delete' );
+    // ORDERS
 
-// CLIENTS
+    Route::get( '/orders', 'OrdersController@list' );
+    Route::get( '/orders/{id}', 'OrdersController@edit' );
 
-Route::get( '/clients', 'ClientsController@list' );
-Route::get( '/clients/{id}', 'ClientsController@edit' );
+});
 
-Route::post( '/clients/create', 'ClientsController@create' );
-Route::post( '/clients/{id}', 'ClientsController@update' );
-Route::delete( '/clients/{id}', 'ClientsController@delete' );
+// MANAGERS MODULE
 
-// PRODUCTS/SERVICES
+Route::middleware([ 'auth', 'role:' . UsersModel::ADMIN_ROLE . ',' . UsersModel::MANAGER_ROLE ])->group( function() {
 
-Route::get( '/products-services', 'ProductsServicesController@list' );
-Route::get( '/products-services/{id}', 'ProductsServicesController@edit' );
+    // ORDERS
 
-Route::post( '/products-services/create', 'ProductsServicesController@create' );
-Route::post( '/products-services/{id}', 'ProductsServicesController@update' );
-Route::delete( '/products-services/{id}', 'ProductsServicesController@delete' );
+    Route::post( '/orders/create', 'OrdersController@create' );
+    Route::post( '/orders/{id}', 'OrdersController@update' );
+    Route::delete( '/orders/{id}', 'OrdersController@delete' );
 
-// POS
+    // CLIENTS
 
-Route::get( '/pos', 'POSController@list' );
-Route::get( '/pos/{id}', 'POSController@edit' );
+    Route::get( '/clients', 'ClientsController@list' );
+    Route::get( '/clients/{id}', 'ClientsController@edit' );
 
-Route::post( '/pos/create', 'POSController@create' );
-Route::post( '/pos/{id}', 'POSController@update' );
-Route::delete( '/pos/{id}', 'POSController@delete' );
+    Route::post( '/clients/create', 'ClientsController@create' );
+    Route::post( '/clients/{id}', 'ClientsController@update' );
+    Route::delete( '/clients/{id}', 'ClientsController@delete' );
 
-// ORDERS
+    //PAYMENTS
 
-Route::get( '/orders', 'OrdersController@list' );
-Route::get( '/orders/{id}', 'OrdersController@edit' );
+    Route::get( 'payments', 'PaymentsController@list' );
+    Route::get( '/payments/{id}', 'PaymentsController@edit' );
 
-Route::post( '/orders/create', 'OrdersController@create' );
-Route::post( '/orders/{id}', 'OrdersController@update' );
-Route::delete( '/orders/{id}', 'OrdersController@delete' );
+    Route::post( '/payments/create', 'PaymentsController@create' );
+    Route::post( '/payments/{id}', 'PaymentsController@update' );
 
-//PAYMENTS
+    //REPORTS
 
-Route::get( 'payments', 'PaymentsController@list' );
-Route::get( '/payments/{id}', 'PaymentsController@edit' );
+    Route::get( 'reports/pos', 'ReportsController@pos' );
+    Route::get( 'reports/orders', 'ReportsController@orders' );
 
-Route::post( '/payments/create', 'PaymentsController@create' );
-Route::post( '/payments/{id}', 'PaymentsController@update' );
+});
 
+// ADMIN MODULE
 
-//REPORTS
+Route::middleware([ 'auth', 'role:' . UsersModel::ADMIN_ROLE ])->group( function() {
 
-Route::get( 'reports/pos', 'ReportsController@pos' );
-Route::get( 'reports/orders', 'ReportsController@orders' );
+    // MANAGERS
+
+    Route::get( '/managers', 'ManagersController@list' );
+    Route::get( '/managers/{id}', 'ManagersController@edit' );
+
+    Route::post( '/managers/create', 'ManagersController@create' );
+    Route::post( '/managers/{id}', 'ManagersController@update' );
+    Route::delete( '/managers/{id}', 'ManagersController@delete' );
+
+    // PRODUCTS/SERVICES
+
+    Route::get( '/products-services', 'ProductsServicesController@list' );
+    Route::get( '/products-services/{id}', 'ProductsServicesController@edit' );
+
+    Route::post( '/products-services/create', 'ProductsServicesController@create' );
+    Route::post( '/products-services/{id}', 'ProductsServicesController@update' );
+    Route::delete( '/products-services/{id}', 'ProductsServicesController@delete' );
+
+    // POS
+
+    Route::get( '/pos', 'POSController@list' );
+    Route::get( '/pos/{id}', 'POSController@edit' );
+
+    Route::post( '/pos/create', 'POSController@create' );
+    Route::post( '/pos/{id}', 'POSController@update' );
+    Route::delete( '/pos/{id}', 'POSController@delete' );
+
+});

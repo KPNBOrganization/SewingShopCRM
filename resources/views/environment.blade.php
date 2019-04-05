@@ -34,40 +34,49 @@
 					<a class="nav-link" href="/orders">Orders</a>
 				</li>
 
-				<li class="nav-item">
-					<a class="nav-link" href="/clients">Clients</a>
-				</li>
+				@if( request()->session()->get( 'user' )->Role == \App\Http\Models\UsersModel::ADMIN_ROLE or
+					request()->session()->get( 'user' )->Role == \App\Http\Models\UsersModel::MANAGER_ROLE )
 
-				<li class="nav-item">
-					<a class="nav-link" href="/payments">Payments</a>
-				</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/clients">Clients</a>
+					</li>
 
-				<li class="nav-item dropdown">
+					<li class="nav-item">
+						<a class="nav-link" href="/payments">Payments</a>
+					</li>
 
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownReports" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Reports
-					</a>
+					<li class="nav-item dropdown">
 
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownReports">
-						<a class="dropdown-item" href="/reports/orders">Orders</a>
-						<a class="dropdown-item" href="/reports/pos">Points of Sales</a>
-					</div>
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownReports" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Reports
+						</a>
 
-				</li>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownReports">
+							<a class="dropdown-item" href="/reports/orders">Orders</a>
+							<a class="dropdown-item" href="/reports/pos">Points of Sales</a>
+						</div>
 
-				<li class="nav-item dropdown">
+					</li>
 
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Administrator
-					</a>
+					@if( request()->session()->get( 'user' )->Role == \App\Http\Models\UsersModel::ADMIN_ROLE )
 
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="/pos">Points of Sales</a>
-						<a class="dropdown-item" href="/products-services">Products & Services</a>
-						<a class="dropdown-item" href="/managers">Managers</a>
-					</div>
+						<li class="nav-item dropdown">
 
-				</li>
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Administrator
+							</a>
+
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="/pos">Points of Sales</a>
+								<a class="dropdown-item" href="/products-services">Products & Services</a>
+								<a class="dropdown-item" href="/managers">Managers</a>
+							</div>
+
+						</li>
+
+					@endif
+
+				@endif
 
 			</ul>
 

@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\DB;
 
 class UsersModel {
 
+    const ADMIN_ROLE = 1;
+    const MANAGER_ROLE = 2;
+    const CLIENT_ROLE = 1;
+
     public static function getByUsername( $username ) {
 
         $result = DB::table( 'Users' )->where( 'Username', '=', $username )->get();
