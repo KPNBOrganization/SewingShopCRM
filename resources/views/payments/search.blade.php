@@ -36,9 +36,9 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Date</th>
+                <th scope="col">Order</th>
                 <th scope="col">Amount</th>
                 <th scope="col">Manager</th>
-                <th scope="col">Order</th>
             </tr>
         </thead>
 
@@ -49,9 +49,9 @@
                 <tr onclick="window.location = '{{ '/payments/' . $payment->ID }}'">
                     <th scope="row">{{ $payment->ID }}</th>
                     <td>{{ $payment->Date }}</td>
-                    <td>{{ $payment->Amount }}</td>
-                    <td>{{ $payment->Manager }}</td>
-                    <td>{{ $payment->OrderID }}</td>                    
+                    <td>{{ $payment->OrderID }}</td>  
+                    <td>{{ number_format( $payment->Amount, 2, '.', '' ) }}</td>
+                    <td>{{ $payment->Manager }}</td>                  
                 </tr>
 
             @endforeach

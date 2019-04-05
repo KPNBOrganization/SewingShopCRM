@@ -8,7 +8,7 @@ class UsersModel {
 
     const ADMIN_ROLE = 1;
     const MANAGER_ROLE = 2;
-    const CLIENT_ROLE = 1;
+    const CLIENT_ROLE = 3;
 
     public static function getByUsername( $username ) {
 

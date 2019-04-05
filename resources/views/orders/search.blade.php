@@ -42,7 +42,11 @@
 
         </form>
 
-        <a class="btn btn-primary float-right mb-3" href="/orders/create">Create</a>
+        @if( request()->session()->get( 'user' )->Role !== \App\Http\Models\UsersModel::CLIENT_ROLE )
+
+            <a class="btn btn-primary float-right mb-3" href="/orders/create">Create</a>
+
+        @endif
 
     </div>
 

@@ -35,7 +35,8 @@
 
                 <div class="form-group">
                     <label for="inputManager">Manager</label>
-                    <select class="form-control" id="inputManager" name="manager">
+                    <select class="form-control" id="inputManager" name="manager"
+                        {{ ( request()->session()->get( 'user' )->Role !== \App\Http\Models\UsersModel::CLIENT_ROLE ? '' : 'disabled' ) }}>
 
                         @foreach ( $managersList as $option )
                             <option value="{{ $option->ID }}"
@@ -49,7 +50,8 @@
 
                 <div class="form-group">
                     <label for="inputClient">Client</label>
-                    <select class="form-control" id="inputClient" name="client">
+                    <select class="form-control" id="inputClient" name="client"
+                        {{ ( request()->session()->get( 'user' )->Role !== \App\Http\Models\UsersModel::CLIENT_ROLE ? '' : 'disabled' ) }}>
                         
                         @foreach ( $clientsList as $option )
                             <option value="{{ $option->ID }}"
@@ -63,7 +65,8 @@
 
                 <div class="form-group">
                     <label for="inputPointOfSale">Point Of Sale</label>
-                    <select class="form-control" id="inputPointOfSale" name="pos">
+                    <select class="form-control" id="inputPointOfSale" name="pos"
+                    {{ ( request()->session()->get( 'user' )->Role !== \App\Http\Models\UsersModel::CLIENT_ROLE ? '' : 'disabled' ) }}>
                         
                         @foreach ( $posList as $option )
                             <option value="{{ $option->ID }}"
@@ -102,23 +105,35 @@
                                                 optionsValue: 'ID',
                                                 optionsCaption: 'Choose...',
                                                 value: product.ProductServiceID,
-                                                event: { change: onProductChange }"></select>
+                                                event: { change: onProductChange }"
+                                                {{ ( request()->session()->get( 'user' )->Role !== \App\Http\Models\UsersModel::CLIENT_ROLE ? '' : 'disabled' ) }}></select>
                             </td>
                             <td class="align-middle" data-bind="text: product.Name"></td>
                             <td class="align-middle" data-bind="text: product.Description"></td>
                             <td class="align-middle" data-bind="text: product.Price"></td>
                             <td class="align-middle">
-                                <input class="form-control" type="number" data-bind="value: product.Quantity" style="width: 100px;" />
+                                <input class="form-control" type="number" data-bind="value: product.Quantity" style="width: 100px;" 
+                                    {{ ( request()->session()->get( 'user' )->Role !== \App\Http\Models\UsersModel::CLIENT_ROLE ? '' : 'disabled' ) }}/>
                             </td>
                             <td class="align-middle" data-bind="text: product.Amount"></td>
                             <td class="align-middle">
-                                <a href="#" class="text-danger" data-bind="click: $parent.delete">Delete</a>
+
+                                @if( request()->session()->get( 'user' )->Role !== \App\Http\Models\UsersModel::CLIENT_ROLE )
+                                    <a href="#" class="text-danger" data-bind="click: $parent.delete">Delete</a>
+                                @endif
+
                             </td>
                         </tr>
                         <!-- /ko -->
 
                         <tr>
-                            <td colspan="2"><button class="btn btn-secondary" data-bind="click: add">Add Product</button></td>
+                            <td colspan="2">
+
+                                @if( request()->session()->get( 'user' )->Role !== \App\Http\Models\UsersModel::CLIENT_ROLE )
+                                    <button class="btn btn-secondary" data-bind="click: add">Add Product</button>
+                                @endif
+                                
+                            </td>
                             <td colspan="4" class="text-right h2">Total:</td>
                             <td colspan="2" class="text-left h2" data-bind="text: totalAmount">99.99</td>
                         </tr>
@@ -130,11 +145,15 @@
                 <input type="hidden" name="totalAmount" data-bind="value: totalAmount" />
                 <input type="hidden" name="orderProducts" data-bind="value: ko.toJSON( orderProducts )" />
 
-                @if( request()->id == 'create' )
-                    <button type="submit" class="btn btn-primary mb-3">Create</button>
-                @else
-                    <button type="submit" class="btn btn-primary mb-3">Update</button>
-                    <button type="button" class="btn btn-danger mb-3" data-toggle="modal" data-target="#confirmModal">Delete</button>
+                @if( request()->session()->get( 'user' )->Role !== \App\Http\Models\UsersModel::CLIENT_ROLE )
+
+                    @if( request()->id == 'create' )
+                        <button type="submit" class="btn btn-primary mb-3">Create</button>
+                    @else
+                        <button type="submit" class="btn btn-primary mb-3">Update</button>
+                        <button type="button" class="btn btn-danger mb-3" data-toggle="modal" data-target="#confirmModal">Delete</button>
+                    @endif
+
                 @endif
 
                 @if ( $errors->any() )

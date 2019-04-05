@@ -9,9 +9,9 @@ use App\Http\Models\ManagersModel;
 
 class OrdersModel {
 
-    public static function list( $searchString = '' ) {
+    public static function list( $searchString = '', $clientid = false ) {
 
-        $result = DB::table( 'Orders' )
+        $query = DB::table( 'Orders' )
                         ->select(
                             '*',
                             DB::raw( '( SELECT FullName FROM Users WHERE Users.ID = UserID ) AS Manager' ),
@@ -61,9 +61,17 @@ class OrdersModel {
                                     )
                                 ' );
             
-                        } )
-                        ->orderBy( 'ID', 'DESC' )
-                        ->get();
+                        } );
+        
+        if( $clientid ) {
+
+            $query->where( 'ClientID', '=', $clientid );
+
+        }
+        
+        $query->orderBy( 'ID', 'DESC' );
+
+        $result = $query->get();
 
         return $result;
 

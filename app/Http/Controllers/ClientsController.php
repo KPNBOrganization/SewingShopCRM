@@ -15,7 +15,7 @@ class ClientsController extends Controller {
 
         $searchString = $request->query( 'search' );
 
-        $list = ClientsModel::list( $searchString );
+        $list = ClientsModel::list( $searchString);
 
         $result = [
             'clients' => $list

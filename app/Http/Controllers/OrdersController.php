@@ -18,7 +18,15 @@ class OrdersController extends Controller {
 
         $searchString = $request->query( 'search' );
 
-        $list = OrdersModel::list( $searchString );
+        $clientid = false;
+
+        if( $request->session()->get( 'user' )->Role == ClientsModel::CLIENT_ROLE ) {
+
+            $clientid = $request->session()->get( 'user' )->ID;
+
+        }
+
+        $list = OrdersModel::list( $searchString, $clientid );
 
         $result = [
             'orders' => $list
