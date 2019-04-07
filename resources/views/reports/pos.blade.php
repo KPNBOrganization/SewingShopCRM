@@ -7,7 +7,7 @@
         <div class="col-md-6">
 
             <h1 class="mb-4">
-                POS Report
+                Points of Sales Report
             </h1>
 
         </div>

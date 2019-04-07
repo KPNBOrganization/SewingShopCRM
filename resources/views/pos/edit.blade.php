@@ -7,7 +7,7 @@
         <div class="col-md-6">
 
             <h1 class="mb-4">
-                POS
+                Points of Sales
             </h1>
 
         </div>
@@ -17,7 +17,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb justify-content-end bg-white">
                     <li class="breadcrumb-item"><a href="/">Home</a></li>
-                    <li class="breadcrumb-item"><a href="/pos">POS</a></li>
+                    <li class="breadcrumb-item"><a href="/pos">Points of Sales</a></li>
                 </ol>
             </nav>
 
